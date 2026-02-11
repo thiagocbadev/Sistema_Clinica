@@ -1,0 +1,215 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Enterprise Healthcare SaaS Design System - Professional, Trustworthy, Modern */
+
+@layer base {
+  :root {
+    /* Neutral Professional Palette - Clean & Modern */
+    --background: 210 40% 98%;
+    /* Slightly cooler white for premium feel */
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    /* Medical Blue - Enhanced for trust & modern look */
+    --primary: 215 90% 45%;
+    /* Brighter, more modern blue */
+    --primary-foreground: 0 0% 100%;
+
+    /* Light Gray - Subtle Secondary */
+    --secondary: 210 20% 96%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 210 20% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    /* Accent - Vibrant but professional */
+    --accent: 215 90% 96%;
+    /* Very light blue for hover states */
+    --accent-foreground: 215 90% 45%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 215 90% 45%;
+
+    --radius: 0.5rem;
+    /* Slightly rounder for modern feel */
+
+    /* Status Colors - Refined */
+    --status-agendado: 215 16% 47%;
+    --status-confirmado: 215 90% 45%;
+    --status-realizado: 142 70% 40%;
+    --status-cancelado: 0 84% 60%;
+    --status-faltou: 0 0% 40%;
+
+    /* Sidebar - Premium Dark Gradient Feel */
+    --sidebar-background: 222 47% 11%;
+    --sidebar-foreground: 210 20% 98%;
+    --sidebar-primary: 215 90% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 217 30% 18%;
+    --sidebar-accent-foreground: 210 20% 98%;
+    --sidebar-border: 217 30% 18%;
+    --sidebar-ring: 215 90% 55%;
+
+    /* Premium Shadows */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  }
+
+  .dark {
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 13%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 13%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 215 90% 55%;
+    --primary-foreground: 222 47% 11%;
+
+    --secondary: 217 30% 18%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217 30% 18%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 217 30% 18%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217 30% 18%;
+    --input: 217 30% 18%;
+    --ring: 215 90% 55%;
+
+    --sidebar-background: 222 47% 10%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 215 90% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 217 30% 18%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 217 30% 18%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Typography Hierarchy */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-semibold tracking-tight;
+  }
+
+  h1 {
+    @apply text-2xl;
+  }
+
+  h2 {
+    @apply text-xl;
+  }
+
+  h3 {
+    @apply text-lg;
+  }
+}
+
+@layer components {
+
+  /* Status Badge Variants - Professional */
+  .status-agendado {
+    @apply bg-muted text-muted-foreground border border-border;
+  }
+
+  .status-confirmado {
+    background-color: hsl(var(--status-confirmado) / 0.1);
+    color: hsl(var(--status-confirmado));
+    border: 1px solid hsl(var(--status-confirmado) / 0.2);
+  }
+
+  .status-realizado {
+    background-color: hsl(var(--status-realizado) / 0.1);
+    color: hsl(var(--status-realizado));
+    border: 1px solid hsl(var(--status-realizado) / 0.2);
+  }
+
+  .status-cancelado {
+    background-color: hsl(var(--status-cancelado) / 0.1);
+    color: hsl(var(--status-cancelado));
+    border: 1px solid hsl(var(--status-cancelado) / 0.2);
+  }
+
+  .status-faltou {
+    @apply bg-muted/10 text-muted-foreground line-through opacity-80;
+  }
+
+}
+
+@layer utilities {
+
+  /* Hide scrollbar but allow scrolling */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Glassmorphism Utilities */
+  .glass {
+    @apply bg-white/70 dark:bg-black/30 backdrop-blur-md border border-white/20 dark:border-white/10 shadow-lg;
+  }
+
+  .glass-card {
+    @apply bg-card/80 backdrop-blur-sm border border-border/50 shadow-sm hover:shadow-md transition-all duration-300;
+  }
+
+  /* Professional table styling */
+  .table-dense {
+    @apply text-sm;
+  }
+
+  .table-dense th {
+    @apply font-semibold text-foreground/80 uppercase tracking-wider text-xs py-3;
+  }
+
+  .table-dense td {
+    @apply text-foreground py-3 border-b border-border/50;
+  }
+
+  /* Text Gradients */
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-600;
+  }
+}
