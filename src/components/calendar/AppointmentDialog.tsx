@@ -82,7 +82,7 @@ export function AppointmentDialog({
     const totalMinutes = hours * 60 + minutes + duration;
     const endHours = Math.floor(totalMinutes / 60);
     const endMinutes = totalMinutes % 60;
-    return `${endHours.toString().padStart(2, '0')}:${endMinutes.toString().padStart(2, '0')}`;
+    return ${endHours.toString().padStart(2, '0')}:${endMinutes.toString().padStart(2, '0')};
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -114,7 +114,7 @@ export function AppointmentDialog({
         });
         onOpenChange(false);
       } else {
-        await addAppointment({
+        const added = await addAppointment({
           patientId: formData.patientId,
           professionalId: formData.professionalId,
           serviceId: formData.serviceId,
@@ -125,10 +125,19 @@ export function AppointmentDialog({
           totalValue: selectedService.price,
           status: 'agendado',
           notes: formData.notes || undefined,
-        });
-        
+        } as any);
+
+        if (!added) {
+          toast({
+            title: 'Erro',
+            description: 'Não foi possível agendar. Verifique conflitos de horário e tente novamente.',
+            variant: 'destructive',
+          });
+          return;
+        }
+
         await new Promise(resolve => setTimeout(resolve, 500));
-        
+
         toast({
           title: 'Sucesso',
           description: 'Consulta agendada com sucesso!',
